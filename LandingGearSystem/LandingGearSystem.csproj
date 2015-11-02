@@ -52,6 +52,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Door.cs" />
+    <Compile Include="Model\Gear.cs" />
     <Compile Include="Model\GearSet.cs" />
     <Compile Include="Model\HandleState.cs" />
     <Compile Include="Model\CockpitHandle.cs" />
