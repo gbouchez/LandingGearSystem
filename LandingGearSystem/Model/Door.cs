@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LandingGearSystem.Model
 {
-    class Gear
+    class Door
     {
-        public Door Door { get; set; }
+        public Gear Gear { get; set; }
     }
 }

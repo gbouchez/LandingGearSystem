@@ -21,8 +21,24 @@ namespace LandingGearSystem.Model
             }
         }
 
+        public List<Gear> Gears { get; set; }
+
+        public GearSet()
+        {
+            Gears = new List<Gear>();
+            byte i;
+            for (i = 3; i > 0; i--)
+            {
+                Gear gear = new Gear();
+                Door door = new Door();
+                gear.Door = door;
+                door.Gear = gear;
+                Gears.Add(gear);
+            }
+        }
+
+
         private IDisposable unsubscriber;
-        private HandleState last;
 
         public virtual void Subscribe(IObservable<HandleState> provider)
         {
@@ -36,7 +52,6 @@ namespace LandingGearSystem.Model
 
         public void OnNext(HandleState value)
         {
-            last = value;
         }
 
         public void OnError(Exception error)
