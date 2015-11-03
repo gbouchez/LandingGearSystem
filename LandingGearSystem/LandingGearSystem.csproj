@@ -55,6 +55,7 @@
     <Compile Include="Model\Door.cs" />
     <Compile Include="Model\Gear.cs" />
     <Compile Include="Model\GearSet.cs" />
+    <Compile Include="Model\GearState.cs" />
     <Compile Include="Model\HandleState.cs" />
     <Compile Include="Model\CockpitHandle.cs" />
     <Compile Include="Program.cs" />

@@ -11,6 +11,8 @@ namespace LandingGearSystem.Model
     {
         public Thread Thread { get; set; }
         public Door Door { get; set; }
+
+        public GearState GearState { get; set; }
         
         public void Init()
         {
@@ -23,7 +25,6 @@ namespace LandingGearSystem.Model
         {
             while (true)
             {
-                Console.WriteLine("Gear " + this.ToString() + " is alive.");
             }
         }
 

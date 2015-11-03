@@ -1,14 +1,16 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LandingGearSystem;
 
 namespace LandingGearSystemTests
 {
     [TestClass]
-    public class UnitTest1
+    public class GearTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void openTest()
         {
+
         }
     }
 }
