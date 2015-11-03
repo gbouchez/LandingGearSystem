@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LandingGearSystem.Model
 {
-    class Gear
+    enum GearState
     {
-        public Door Door { get; set; }
-        public GearState GearState { get; set; }
+        LOCKDOWN,
+        LOCKUP,
+        MOVING,
+        BLOCKED
     }
 }
