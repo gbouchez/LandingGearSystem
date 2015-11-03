@@ -33,6 +33,7 @@ namespace LandingGearSystem.Model
                 Door door = new Door();
                 gear.Door = door;
                 door.Gear = gear;
+                gear.Init();
                 Gears.Add(gear);
             }
         }
@@ -52,6 +53,17 @@ namespace LandingGearSystem.Model
 
         public void OnNext(HandleState value)
         {
+            foreach (Gear gear in Gears)
+            {
+                if (HandleState.UP == value)
+                {
+                    gear.Deploy();
+                }
+                else
+                {
+                    gear.Retract();
+                }
+            }
         }
 
         public void OnError(Exception error)
