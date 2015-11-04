@@ -40,14 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneralElectroValve.cs" />
     <Compile Include="ElectroValve.cs" />
+    <Compile Include="HydraulicCylinderEntry.cs" />
     <Compile Include="HydraulicCylinder.cs" />
+    <Compile Include="ElectroStimulatedInterface.cs" />
     <Compile Include="HydraulicManagedInterface.cs" />
     <Compile Include="LandingGear.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="LandingSetPosition.cs" />
     <Compile Include="LandingSet.cs" />
+    <Compile Include="Plane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

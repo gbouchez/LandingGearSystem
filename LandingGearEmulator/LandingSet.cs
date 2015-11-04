@@ -11,5 +11,14 @@ namespace LandingGearEmulator
         public LandingSetPosition Position { get; set; }
         public Door Door { get; set; }
         public LandingGear LandingGear { get; set; }
+
+        public LandingSet(LandingSetPosition position)
+        {
+            Door = new Door();
+            Door.LandingSet = this;
+
+            LandingGear = new LandingGear();
+            LandingGear.LandingSet = this;
+        }
     }
 }

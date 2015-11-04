@@ -9,5 +9,9 @@ namespace LandingGearEmulator
     public interface HydraulicManagedInterface
     {
         HydraulicCylinder Cylinder { get; set; }
+
+        void OnCylinderExtended();
+
+        void OnCylinderRetracted();
     }
 }

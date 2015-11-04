@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace LandingGearEmulator
 {
-    public class GeneralElectroValve : ElectroValve
+    public interface ElectroStimulatedInterface
     {
-        public List<HydraulicCylinder> Cylinders { get; set; }
+        ElectroValve Valve { get; set; }
+
+        void OnElectroStimulation();
     }
 }
