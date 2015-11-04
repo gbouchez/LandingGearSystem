@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LandingGearSystem\LandingGearSystem.csproj">
-      <Project>{297bf8a5-af3c-40e0-9135-a423baffc2db}</Project>
+      <Project>{d14dc404-ba4a-4e41-8f5b-c69dd579ab67}</Project>
       <Name>LandingGearSystem</Name>
     </ProjectReference>
   </ItemGroup>

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace LandingGearEmulator
 {
-    public class Door
+    public class Door : HydraulicManagedInterface
     {
+        private HydraulicCylinder cylinder;
+        public HydraulicCylinder Cylinder { get; set; }
+
         public LandingSet LandingSet { get; set; }
     }
 }

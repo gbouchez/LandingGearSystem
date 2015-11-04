@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LandingGearSystem.Model
+namespace LandingGearSystem.Interface
 {
-    class Door
+    class Light
     {
-        public Gear Gear { get; set; }
+        public string Color { get; set; }
     }
 }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HydraulicCylinder.cs" />
+    <Compile Include="HydraulicManagedInterface.cs" />
     <Compile Include="LandingGear.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="LandingSetPosition.cs" />

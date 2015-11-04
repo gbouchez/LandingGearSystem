@@ -8,6 +8,6 @@ namespace LandingGearEmulator
 {
     public class HydraulicCylinder
     {
-        public LandingSet LandingSet { get; set; }
+        public HydraulicManagedInterface RelatedSystem { get; set; }
     }
 }

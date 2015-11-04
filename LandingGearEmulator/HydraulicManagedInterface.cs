@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LandingGearSystem.Model
+namespace LandingGearEmulator
 {
-    enum GearState
+    public interface HydraulicManagedInterface
     {
-        LOCKDOWN,
-        LOCKUP,
-        MOVING,
-        BLOCKED
+        HydraulicCylinder Cylinder { get; set; }
     }
 }
