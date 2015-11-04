@@ -37,12 +37,7 @@ namespace LandingGearSystem.Model
             }
         }
 
-        private List<IObserver<HandleState>> observers;
-
-        public CockpitHandle()
-        {
-            observers = new List<IObserver<HandleState>>();
-        }
+        private List<IObserver<HandleState>> observers = new List<IObserver<HandleState>>();
 
         private class Unsubscriber : IDisposable
         {

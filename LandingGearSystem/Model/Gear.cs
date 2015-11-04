@@ -12,7 +12,7 @@ namespace LandingGearSystem.Model
         public Thread Thread { get; set; }
         public Door Door { get; set; }
 
-        public GearState GearState { get; set; }
+        public GearState GearState { get; set; } = GearState.LOCKUP;
         
         public void Init()
         {
@@ -25,12 +25,19 @@ namespace LandingGearSystem.Model
         {
             while (true)
             {
+                switch (GearState)
+                {
+                    case GearState.LOCKUP:
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
         public void Deploy()
         {
-
+            GearState = GearState.LOCKDOWN;
         }
         public void Retract()
         {
