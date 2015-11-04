@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneralElectroValve.cs" />
+    <Compile Include="ElectroValve.cs" />
     <Compile Include="HydraulicCylinder.cs" />
     <Compile Include="HydraulicManagedInterface.cs" />
     <Compile Include="LandingGear.cs" />
