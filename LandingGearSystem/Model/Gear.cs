@@ -13,7 +13,7 @@ namespace LandingGearSystem.Model
 
         public GearController Controller { get; set; }
 
-        private GearState state;
+        private GearState state = GearState.LOCKUP;
         public GearState GearState
         {
             get

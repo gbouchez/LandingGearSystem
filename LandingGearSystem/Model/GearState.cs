@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LandingGearSystem.Model
 {
-    enum GearState
+    public enum GearState
     {
         LOCKDOWN,
         LOCKUP,

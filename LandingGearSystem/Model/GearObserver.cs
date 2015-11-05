@@ -23,7 +23,10 @@ namespace LandingGearSystem.Model
 
         public void OnNext(GearState value)
         {
-            Controller.ComputeLightStates();
+            lock(Controller)
+            {
+                Controller.UpdateView();
+            }
         }
 
         public void OnError(Exception error)

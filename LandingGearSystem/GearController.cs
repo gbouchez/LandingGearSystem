@@ -34,9 +34,38 @@ namespace LandingGearSystem
             }
         }
 
+        internal void UpdateView()
+        {
+            ComputeLightStates();
+        }
+
         internal void ComputeLightStates()
         {
-            Form.LightState = LightState.GREEN;
+            if (frontGear.GearState == GearState.LOCKDOWN
+                && rightGear.GearState == GearState.LOCKDOWN
+                && leftGear.GearState == GearState.LOCKDOWN)
+            {
+                Form.LightState = LightState.GREEN;
+            }
+            else if (frontGear.GearState == GearState.MOVING
+                || rightGear.GearState == GearState.MOVING
+                || leftGear.GearState == GearState.MOVING)
+            {
+                Form.LightState = LightState.YELLOW;
+            }
+            else if (frontGear.GearState == GearState.LOCKUP
+                && rightGear.GearState == GearState.LOCKUP
+                & leftGear.GearState == GearState.LOCKUP)
+            {
+                Form.LightState = LightState.NONE;
+            }
+            else
+            {
+                Form.LightState = LightState.RED;
+            }
+            Form.FrontGearState = frontGear.GearState;
+            Form.LeftGearState = leftGear.GearState;
+            Form.RightGearState = rightGear.GearState;
             Form.Invoke(Form.myDelegate);
         }
 

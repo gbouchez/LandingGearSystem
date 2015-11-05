@@ -14,12 +14,15 @@ namespace LandingGearSystem
     public partial class MainForm : Form
     {
         public LightState LightState = LightState.NONE;
-        public delegate void UpdateLights();
-        public UpdateLights myDelegate;
+        public GearState FrontGearState = GearState.LOCKUP;
+        public GearState RightGearState = GearState.LOCKUP;
+        public GearState LeftGearState = GearState.LOCKUP;
+        public delegate void UpdateFromGears();
+        public UpdateFromGears myDelegate;
         public MainForm()
         {
             InitializeComponent();
-            myDelegate = new UpdateLights(UpdateLightsMethod);
+            myDelegate = new UpdateFromGears(UpdateFromGearsMethod);
             GearController.Instance.Form = this;
         }
 
@@ -34,16 +37,43 @@ namespace LandingGearSystem
                 GearController.Instance.Retract();
             }
         }
-        public void UpdateLightsMethod()
+        public void UpdateFromGearsMethod()
         {
             switch (LightState)
             {
                 case LightState.GREEN:
-
-                    this.pictureLight.Image = global::LandingGearSystem.Properties.Resources.feu_vert;
+                    this.pictureLight.Image = Properties.Resources.feu_vert;
+                    break;
+                case LightState.YELLOW:
+                    this.pictureLight.Image = Properties.Resources.feu_orange;
+                    break;
+                case LightState.NONE:
+                    this.pictureLight.Image = Properties.Resources.feu_vide;
+                    break;
+                case LightState.RED:
+                default:
+                    this.pictureLight.Image = Properties.Resources.feu_rouge;
                     break;
             }
-            Console.WriteLine("test");
+            UpdateGearPicture(pbFrontGear, FrontGearState);
+            UpdateGearPicture(pbLeftGear, LeftGearState);
+            UpdateGearPicture(pbRightGear, RightGearState);
+        }
+
+        private void UpdateGearPicture(PictureBox pb, GearState state)
+        {
+            switch (state)
+            {
+                case GearState.LOCKDOWN:
+                    pb.Image = Properties.Resources.gear2_extracted;
+                    break;
+                case GearState.LOCKUP:
+                    pb.Image = Properties.Resources.gear2_retracted;
+                    break;
+                case GearState.MOVING:
+                    pb.Image = Properties.Resources.gear2_moving;
+                    break;
+            }
         }
     }
 }

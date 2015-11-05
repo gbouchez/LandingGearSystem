@@ -63,9 +63,39 @@ namespace LandingGearSystem.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap door2_closed {
+            get {
+                object obj = ResourceManager.GetObject("door2_closed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap door2_opened {
+            get {
+                object obj = ResourceManager.GetObject("door2_opened", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap feu_orange {
             get {
                 object obj = ResourceManager.GetObject("feu_orange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap feu_rouge {
+            get {
+                object obj = ResourceManager.GetObject("feu_rouge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
