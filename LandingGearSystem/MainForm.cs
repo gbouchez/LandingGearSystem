@@ -13,12 +13,14 @@ namespace LandingGearSystem
 {
     public partial class MainForm : Form
     {
+        public LightState LightState = LightState.NONE;
         public delegate void UpdateLights();
         public UpdateLights myDelegate;
         public MainForm()
         {
             InitializeComponent();
             myDelegate = new UpdateLights(UpdateLightsMethod);
+            GearController.Instance.Form = this;
         }
 
         private void handleScrollBar_ValueChanged(object sender, EventArgs e)
@@ -34,6 +36,13 @@ namespace LandingGearSystem
         }
         public void UpdateLightsMethod()
         {
+            switch (LightState)
+            {
+                case LightState.GREEN:
+
+                    this.pictureLight.Image = global::LandingGearSystem.Properties.Resources.feu_vert;
+                    break;
+            }
             Console.WriteLine("test");
         }
     }

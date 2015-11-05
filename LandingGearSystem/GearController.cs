@@ -10,10 +10,14 @@ namespace LandingGearSystem
 {
     class GearController
     {
+        public MainForm Form;
         private static GearController instance;
         private Gear frontGear;
         private Gear rightGear;
         private Gear leftGear;
+        private GearObserver frontGearObserver = new GearObserver();
+        private GearObserver rightGearObserver = new GearObserver();
+        private GearObserver leftGearObserver  = new GearObserver();
 
         public volatile bool ShouldDeploy;
         public volatile bool ShouldRetract;
@@ -32,14 +36,21 @@ namespace LandingGearSystem
 
         internal void ComputeLightStates()
         {
-            Console.WriteLine("test ?");
+            Form.LightState = LightState.GREEN;
+            Form.Invoke(Form.myDelegate);
         }
 
         public GearController()
         {
             frontGear = new Gear(this);
+            frontGearObserver.Subscribe(frontGear);
+            frontGearObserver.Controller = this;
             rightGear = new Gear(this);
+            rightGearObserver.Subscribe(rightGear);
+            rightGearObserver.Controller = this;
             leftGear = new Gear(this);
+            leftGearObserver.Subscribe(leftGear);
+            leftGearObserver.Controller = this;
         }
 
         public void Deploy()
