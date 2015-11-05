@@ -22,6 +22,9 @@ namespace LandingGearSystem.Model
         }
 
         public List<Gear> Gears { get; set; }
+        public Gear LeftGear;
+        public Gear RightGear;
+        public Gear FrontGear;
 
         public GearSet()
         {
@@ -33,8 +36,21 @@ namespace LandingGearSystem.Model
                 Door door = new Door();
                 gear.Door = door;
                 door.Gear = gear;
-                gear.Init();
+                gear.Position = i;
                 Gears.Add(gear);
+                switch (i)
+                {
+                    case 3:
+                        FrontGear = gear;
+                        break;
+                    case 2:
+                        LeftGear = gear;
+                        break;
+                    case 1:
+                        RightGear = gear;
+                        break;
+                }
+                gear.Init();
             }
         }
 

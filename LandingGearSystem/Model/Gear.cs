@@ -9,10 +9,21 @@ namespace LandingGearSystem.Model
 {
     class Gear
     {
+        public int Position { get; set; }
         public Thread Thread { get; set; }
         public Door Door { get; set; }
 
-        public GearState GearState { get; set; } = GearState.LOCKUP;
+        private GearState state = GearState.LOCKUP;
+        public GearState GearState {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+            }
+        }
         public GearState FinalState { get; set; } = GearState.LOCKUP;
 
         public int Deployment { get; set; } = 0;
