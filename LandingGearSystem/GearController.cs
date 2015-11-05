@@ -30,6 +30,11 @@ namespace LandingGearSystem
             }
         }
 
+        internal void ComputeLightStates()
+        {
+            Console.WriteLine("test ?");
+        }
+
         public GearController()
         {
             frontGear = new Gear(this);

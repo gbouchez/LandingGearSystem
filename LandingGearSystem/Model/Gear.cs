@@ -7,13 +7,56 @@ using System.Threading;
 
 namespace LandingGearSystem.Model
 {
-    class Gear
+    class Gear : IObservable<GearState>
     {
         public Door Door { get; set; }
 
         public GearController Controller { get; set; }
 
-        public GearState GearState { get; set; }
+        private GearState state;
+        public GearState GearState
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                foreach (IObserver<GearState> observer in observers)
+                {
+                    observer.OnNext(state);
+                }
+            }
+        }
+
+        #region Observer
+        private List<IObserver<GearState>> observers = new List<IObserver<GearState>>();
+        private class Unsubscriber : IDisposable
+        {
+            private List<IObserver<GearState>> _observers;
+            private IObserver<GearState> _observer;
+
+            public Unsubscriber(List<IObserver<GearState>> observers, IObserver<GearState> observer)
+            {
+                this._observers = observers;
+                this._observer = observer;
+            }
+
+            public void Dispose()
+            {
+                if (!(_observer == null)) _observers.Remove(_observer);
+            }
+        }
+
+        public IDisposable Subscribe(IObserver<GearState> observer)
+        {
+            if (!observers.Contains(observer))
+                observers.Add(observer);
+
+            return new Unsubscriber(observers, observer);
+        }
+        #endregion
 
         public Gear(GearController controller)
         {
