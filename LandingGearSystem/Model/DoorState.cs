@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace LandingGearSystem.Model
 {
-    class Door
+    enum DoorState
     {
-        public Gear Gear { get; set; }
-
-        public DoorState DoorState { get; set; } = DoorState.LOCKUP;
+        LOCKUP,
+        DOWN
     }
 }

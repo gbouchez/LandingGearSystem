@@ -21,7 +21,7 @@ namespace LandingGearSystem
 
         private void handleScrollBar_ValueChanged(object sender, EventArgs e)
         {
-            CockpitHandle.Instance.State = handleScrollBar.Value == 1 ? HandleState.DOWN : HandleState.UP;
+            CockpitHandle.Instance.State = handleScrollBar.Value == 1 ? HandleState.UP : HandleState.DOWN;
         }
     }
 }

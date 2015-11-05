@@ -42,7 +42,6 @@
             this.handleScrollBar.Name = "handleScrollBar";
             this.handleScrollBar.Size = new System.Drawing.Size(17, 80);
             this.handleScrollBar.TabIndex = 0;
-            this.handleScrollBar.Value = 1;
             this.handleScrollBar.ValueChanged += new System.EventHandler(this.handleScrollBar_ValueChanged);
             // 
             // handleLabelText

@@ -13,7 +13,11 @@ namespace LandingGearSystem.Model
         public Door Door { get; set; }
 
         public GearState GearState { get; set; } = GearState.LOCKUP;
-        
+        public GearState FinalState { get; set; } = GearState.LOCKUP;
+
+        public int Deployment { get; set; } = 0;
+        const int FullDeployment = 1000;
+
         public void Init()
         {
             Thread = new Thread(this.Live);
@@ -25,9 +29,32 @@ namespace LandingGearSystem.Model
         {
             while (true)
             {
-                switch (GearState)
+                if (Deployment == 0 && GearState != GearState.LOCKUP)
+                {
+                    GearState = GearState.LOCKUP;
+                    Console.WriteLine("Lockup");
+                }
+                else if (Deployment == FullDeployment && GearState != GearState.LOCKDOWN)
+                {
+                    GearState = GearState.LOCKDOWN;
+                    Console.WriteLine("Lockdown");
+                }
+
+                switch (FinalState)
                 {
                     case GearState.LOCKUP:
+                        if (GearState == FinalState)
+                        {
+                            break;
+                        }
+                        Deployment--;
+                        break;
+                    case GearState.LOCKDOWN:
+                        if (GearState == FinalState)
+                        {
+                            break;
+                        }
+                        Deployment++;
                         break;
                     default:
                         break;
@@ -37,11 +64,12 @@ namespace LandingGearSystem.Model
 
         public void Deploy()
         {
-            GearState = GearState.LOCKDOWN;
+            FinalState = GearState.LOCKDOWN;
         }
+
         public void Retract()
         {
-
+            FinalState = GearState.LOCKUP;
         }
     }
 }
