@@ -32,8 +32,8 @@
             this.handleLabelText = new System.Windows.Forms.Label();
             this.handleUpLabel = new System.Windows.Forms.Label();
             this.handleDownLabel = new System.Windows.Forms.Label();
-            this.pictureFire = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureFire)).BeginInit();
+            this.pictureLight = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLight)).BeginInit();
             this.SuspendLayout();
             // 
             // handleScrollBar
@@ -74,28 +74,28 @@
             this.handleDownLabel.TabIndex = 3;
             this.handleDownLabel.Text = "Down";
             // 
-            // pictureFire
+            // pictureLight
             // 
-            this.pictureFire.Image = global::LandingGearSystem.Properties.Resources.feu_vide;
-            this.pictureFire.Location = new System.Drawing.Point(101, 12);
-            this.pictureFire.Name = "pictureFire";
-            this.pictureFire.Size = new System.Drawing.Size(352, 97);
-            this.pictureFire.TabIndex = 4;
-            this.pictureFire.TabStop = false;
+            this.pictureLight.Image = global::LandingGearSystem.Properties.Resources.feu_vide;
+            this.pictureLight.Location = new System.Drawing.Point(101, 12);
+            this.pictureLight.Name = "pictureLight";
+            this.pictureLight.Size = new System.Drawing.Size(352, 97);
+            this.pictureLight.TabIndex = 4;
+            this.pictureLight.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 339);
-            this.Controls.Add(this.pictureFire);
+            this.Controls.Add(this.pictureLight);
             this.Controls.Add(this.handleDownLabel);
             this.Controls.Add(this.handleUpLabel);
             this.Controls.Add(this.handleLabelText);
             this.Controls.Add(this.handleScrollBar);
             this.Name = "MainForm";
             this.Text = "Landing Gear System Simulation";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureFire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,7 +107,7 @@
         private System.Windows.Forms.Label handleLabelText;
         private System.Windows.Forms.Label handleUpLabel;
         private System.Windows.Forms.Label handleDownLabel;
-        private System.Windows.Forms.PictureBox pictureFire;
+        private System.Windows.Forms.PictureBox pictureLight;
     }
 }
 

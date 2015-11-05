@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace LandingGearSystem.Model
 {
-    class CockpitHandle
+    public enum LightState
     {
-        public HandleState State { get; set; }
+        NONE,
+        GREEN,
+        YELLOW,
+        RED
     }
 }

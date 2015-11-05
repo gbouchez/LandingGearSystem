@@ -9,78 +9,82 @@ namespace LandingGearSystem.Model
 {
     class Gear
     {
-        public int Position { get; set; }
-        public Thread Thread { get; set; }
         public Door Door { get; set; }
 
-        private GearState state = GearState.LOCKUP;
-        public GearState GearState {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-            }
-        }
-        public GearState FinalState { get; set; } = GearState.LOCKUP;
+        public GearController Controller { get; set; }
 
-        public int Deployment { get; set; } = 0;
-        const int FullDeployment = 1000;
+        public GearState GearState { get; set; }
 
-        public void Init()
+        public Gear(GearController controller)
         {
-            Thread = new Thread(this.Live);
-            Thread.IsBackground = true;
-            Thread.Start();
-        }
-
-        public void Live()
-        {
-            while (true)
-            {
-                if (Deployment == 0 && GearState != GearState.LOCKUP)
-                {
-                    GearState = GearState.LOCKUP;
-                    Console.WriteLine("Lockup");
-                }
-                else if (Deployment == FullDeployment && GearState != GearState.LOCKDOWN)
-                {
-                    GearState = GearState.LOCKDOWN;
-                    Console.WriteLine("Lockdown");
-                }
-
-                switch (FinalState)
-                {
-                    case GearState.LOCKUP:
-                        if (GearState == FinalState)
-                        {
-                            break;
-                        }
-                        Deployment--;
-                        break;
-                    case GearState.LOCKDOWN:
-                        if (GearState == FinalState)
-                        {
-                            break;
-                        }
-                        Deployment++;
-                        break;
-                    default:
-                        break;
-                }
-            }
+            Controller = controller;
+            Door = new Door(this);
         }
 
         public void Deploy()
         {
-            FinalState = GearState.LOCKDOWN;
+            if (GearState == GearState.LOCKDOWN)
+            {
+                return;
+            }
+            if (!Controller.ShouldDeploy)
+            {
+                return;
+            }
+            if (Door.DoorState != DoorState.DOWN)
+            {
+                Door.Open();
+            }
+            if (!Controller.ShouldDeploy)
+            {
+                return;
+            }
+            GearState = GearState.MOVING;
+            Thread.Sleep(1000);
+            GearState = GearState.LOCKDOWN;
+            if (!Controller.ShouldDeploy)
+            {
+                return;
+            }
+            if (Door.DoorState != DoorState.LOCKUP)
+            {
+                Door.Close();
+            }
+            Controller.ShouldDeploy = false;
+            return;
         }
 
         public void Retract()
         {
-            FinalState = GearState.LOCKUP;
+            if (GearState == GearState.LOCKUP)
+            {
+                return;
+            }
+            if (!Controller.ShouldRetract)
+            {
+                return;
+            }
+            if (Door.DoorState != DoorState.DOWN)
+            {
+                Door.Open();
+            }
+            if (!Controller.ShouldRetract)
+            {
+                return;
+            }
+            GearState = GearState.MOVING;
+            Thread.Sleep(1000);
+            GearState = GearState.LOCKUP;
+            if (!Controller.ShouldRetract)
+            {
+                return;
+            }
+            if (Door.DoorState != DoorState.LOCKUP)
+            {
+                Door.Close();
+            }
+            Controller.ShouldRetract = false;
+            return;
         }
     }
 }

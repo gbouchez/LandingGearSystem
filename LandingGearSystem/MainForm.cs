@@ -13,15 +13,28 @@ namespace LandingGearSystem
 {
     public partial class MainForm : Form
     {
+        public delegate void UpdateLights();
+        public UpdateLights myDelegate;
         public MainForm()
         {
             InitializeComponent();
-            GearSet.Instance.Subscribe(CockpitHandle.Instance);
+            myDelegate = new UpdateLights(UpdateLightsMethod);
         }
 
         private void handleScrollBar_ValueChanged(object sender, EventArgs e)
         {
-            CockpitHandle.Instance.State = handleScrollBar.Value == 1 ? HandleState.UP : HandleState.DOWN;
+            if (handleScrollBar.Value == 1)
+            {
+                GearController.Instance.Deploy();
+            }
+            else
+            {
+                GearController.Instance.Retract();
+            }
+        }
+        public void UpdateLightsMethod()
+        {
+            Console.WriteLine("test");
         }
     }
 }
