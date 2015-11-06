@@ -16,12 +16,16 @@ namespace LandingGearSystem.Model
         {
             Gear = gear;
         }
-
+        /// <summary>
+        /// Used to open the door before the <see cref="Gear"/> movement
+        /// </summary>
         public void Open()
         {
             DoorState = DoorState.DOWN;
         }
-
+        /// <summary>
+        /// Used to open the door after the <see cref="Gear"/> movement
+        /// </summary>
         public void Close()
         {
             DoorState = DoorState.LOCKUP;

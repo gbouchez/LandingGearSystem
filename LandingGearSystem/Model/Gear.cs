@@ -7,6 +7,9 @@ using System.Threading;
 
 namespace LandingGearSystem.Model
 {
+    /// <summary>
+    /// The gear extends IObservable, that way we have an <see cref="GearObserver"/> to watch it
+    /// </summary>
     class Gear : IObservable<GearState>
     {
         public Door Door { get; set; }
@@ -63,7 +66,9 @@ namespace LandingGearSystem.Model
             Controller = controller;
             Door = new Door(this);
         }
-
+        /// <summary>
+        /// Deploy the gear. If the precontitions are met
+        /// </summary>
         public void Deploy()
         {
             if (GearState == GearState.LOCKDOWN)
@@ -96,7 +101,9 @@ namespace LandingGearSystem.Model
             Controller.ShouldDeploy = false;
             return;
         }
-
+        /// <summary>
+        /// Retracts the gear, if the conditions are met.
+        /// </summary>
         public void Retract()
         {
             if (GearState == GearState.LOCKUP)
